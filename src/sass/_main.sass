@@ -1,0 +1,152 @@
+.section
+  padding-bottom: 40px
+  background-color: #e9edee
+
+  &--first
+    padding-top: 40px
+
+  &--two,
+  &--table
+
+    +to(600)
+      display: none
+
+  &__wrap
+    display: flex
+    flex-wrap: wrap
+
+    +to(1400)
+      display: block
+
+  &__item-v1
+    flex-basis: 375px
+    height: 530px
+    margin-right: 40px
+
+  &__item-v2
+    flex-basis: 200px
+    flex-grow: 1
+
+  &__item-v3
+    flex-basis: 820px
+    margin-right: 40px
+
+  &__item-v4
+    height: 570px
+    margin-bottom: 40px
+
+    &:last-child
+      height: 500px
+      margin-bottom: 0
+
+  &__item-v5
+    flex-basis: 727px
+    margin-right: 40px
+
+  &__item-v1,
+  &__item-v2,
+  &__item-v3,
+  &__item-v4,
+  &__item-v5
+
+    +to(1400)
+      width: 100%
+      margin-bottom: 40px
+
+
+.chart
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  padding: 30px
+
+  background-color: #f3f3f3
+
+
+  &__head
+    display: flex
+    align-items: center
+    margin-bottom: 50px
+
+  &__title
+    margin: 0
+    padding: 0
+    margin-right: auto
+
+    font-size: 33px
+    font-weight: 400
+    color: #a3a3a3
+
+  &__main
+    text-align: center
+    margin-bottom: 40px
+
+    &--col
+      display: flex
+
+      +to(680)
+        flex-direction: column-reverse
+
+    &--diagram
+      margin-left: auto
+
+      +to(680)
+        margin-right: auto
+        margin-bottom: 20px
+
+.button
+  width: 36px
+  height: 36px
+  margin-left: 5px
+  border: 2px solid #a3a3a3
+  border-radius: 12px
+  outline: 0
+
+  background-color: transparent
+
+  cursor: pointer
+
+  &--menu
+    background: url(../img/icon-menu.png) center center no-repeat
+
+  &--options
+    background: url(../img/icon-options.png) center center no-repeat
+
+
+.more
+  font-size: 17px
+  font-weight: 300
+
+  text-decoration: none
+  color: #858585
+
+
+
+.sale
+  &__count
+    font-size: 100px
+    font-weight: 700
+
+    color: #f95738
+
+  span
+    display: inline-block
+    +arr(36, 30, #f95738, t)
+
+  &__more
+    font-size: 25px
+    color: #858585
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
+
+
+.total
+  font-size: 38px
+  font-weight: 400
+  margin-top: 40px
+  text-align: left
+  color: #363636
+
+

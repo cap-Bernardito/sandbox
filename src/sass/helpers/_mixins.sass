@@ -1,0 +1,129 @@
+
+// Mediaquery
+=from($min_width)
+  @media screen and (min-width: $min_width + 'px')
+    @content
+
+=to($max_width)
+  @media screen and (max-width: $max_width + 'px')
+    @content
+
+=from-to($min_width, $max_width)
+  @media screen and (min-width: $min_width) and (max-width: $max_width)
+    @content
+
+=retina
+  @media (min-resolution: 144dpi), (min-resolution: 1.5dppx)
+    @content
+
+
+
+
+// font-family
+=font($alias, $name, $weigth: normal)
+  @font-face
+    font-family: $alias
+    src: url("../fonts/" + $name + ".woff2") format("woff2"), url("../fonts/" + $name + ".woff") format("woff")
+    font-weight: $weigth
+    font-style: normal
+// to use:
+//+font(black, cytiapro-black-webfont)
+
+=w($col, $container)
+  width: round($col / $container * 100%)
+
+=ie
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+    @content
+
+
+// Display flex wrap
+=df
+  display: flex
+  flex-wrap: wrap
+
+// .visually-hidden
+=vh()
+  position: absolute
+  clip: rect(0 0 0 0)
+  width: 1px
+  height: 1px
+  margin: -1px
+
+=revh()
+  position: statick
+  clip: auto
+  width: auto
+  height: auto
+  margin: 0
+
+// Center container
+=vcenter()
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+=bg
+  background: rgba(pink, .4)
+
+//flip-horizontal
+=fg
+  transform: scale(-1, 1)
+
+//flip-vertical
+=fg
+  transform: scale(1, -1)
+
+//placeholder
+=placeholder
+  &::placeholder
+    @content
+
+=placeholder-color($color)
+  &::placeholder
+    color: $color
+
+// ROTATE
+=rotate($deg: 0, $m11: 0, $m12: 0, $m21: 0, $m22: 0)
+  transform: rotate($deg + deg)
+  filter: progid:DXImageTransform.Microsoft.Matrix(M11=$m11, M12=$m12,M21=$m21, M22=$m22, sizingMethod='auto expand')
+  zoom: 1
+
+// TRANSITION
+
+=tr($what, $time: .3s, $how: ease)
+  transition: $what $time $how
+
+// triangle
+=arr($width, $height, $bg, $direction)
+  width: 0px
+  height: 0px
+  border-style: solid
+  @if $direction == t
+    border-width: 0 $width / 2 + px $height + px $width / 2 + px
+    border-color: transparent transparent $bg transparent
+  @if $direction == r
+    border-width: $height / 2 + px 0 $height / 2 + px $width + px
+    border-color: transparent transparent transparent $bg
+  @if $direction == b
+    border-width: $height + px $width / 2 + px 0 $width / 2 + px
+    border-color: $bg transparent transparent transparent
+  @if $direction == l
+    border-width: $height / 2 + px $width + px $height / 2 + px 0
+    border-color: transparent $bg transparent transparent
+  @if $direction == tl
+    border-width: $height + px $width + px 0 0
+    border-color: $bg transparent transparent transparent
+  @if $direction == tr
+    border-width: 0 $width + px $height + px 0
+    border-color: transparent $bg transparent transparent
+  @if $direction == br
+    border-width: 0 0 $height + px $width + px
+    border-color: transparent transparent $bg transparent
+  @if $direction == bl
+    border-width: $width + px 0 0 $height + px
+    border-color: transparent transparent transparent $bg
+// example
+// +arr(500,50, #000, l)
+// +arr(500,50, #000, bl)

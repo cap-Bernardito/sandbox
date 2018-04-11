@@ -1,0 +1,48 @@
+.rating-table
+  width: 100%
+  table-layout: fixed
+  border-collapse: collapse
+
+  font-size: 25px
+  font-weight: 300
+  color: #858585
+
+  thead
+    font-weight: 400
+    text-align: center
+
+    tr:nth-child(odd)
+      background-color: inherit
+
+  tr:nth-child(odd)
+    background-color: #ecf0f1
+
+  tr td
+    padding: 25px 0
+    border-bottom: 1px solid #353535
+
+  tr td:first-child
+    text-align: left
+    padding-left: 20px
+
+    +to(1400)
+      display: none
+
+  tr td:nth-child(3n)
+    +to(1400)
+      display: none
+
+  &__id,
+  &__sale,
+  &__rating
+    width: 180px
+
+.rating
+  width: 150px
+  height: 27px
+  margin: 0 auto
+  background: url(../img/star.png) left top repeat-x
+
+  &__active
+    background: url(../img/star.png) left center repeat-x
+    height: 100%

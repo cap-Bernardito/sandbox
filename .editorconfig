@@ -1,0 +1,33 @@
+# http://EditorConfig.org
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.js]
+# indent_size = 2
+
+[*.scss]
+# indent_size = tab
+# indent_style = tab
+
+[*.sass]
+# indent_size = tab
+# indent_style = tab
+
+[*.sss]
+indent_size = tab
+indent_style = tab
+
+[*.pug]
+indent_size = tab
+indent_style = tab
+
+[{bower.json,package.json,.travis.yml}]
+indent_style = space
+indent_size = 2

@@ -1,0 +1,106 @@
+$fields: 10px
+$max_width: 940px
+$offset: 20px
+$columns: 12
+$offset_one_side: ($offset / 2)
+
+
+=wrapper-full()
+  padding-left: $fields
+  padding-right: $fields
+
+=container()
+  max-width: $max_width
+  margin: 0 auto
+  +wrapper-full()
+
+=row-offsets()
+  margin-left: ($offset_one_side * -1)
+  margin-right: ($offset_one_side * -1)
+
+=row-flex()
+  +row-offsets()
+
+=row-float()
+  +row-offsets()
+  +clearfix()
+
+=col-offsets($type)
+  #{$type}-left: $offset_one_side
+  #{$type}-right: $offset_one_side
+
+=col()
+  box-sizing: border-box
+  word-wrap: break-word
+  +col-offsets(margin)
+
+=col-float()
+  float: left
+
+=col-padding()
+  word-wrap: break-word
+  +col-offsets(padding)
+
+=row-ib()
+  +row-offsets()
+
+=col-ib()
+  display: inline-block
+  vertical-align: top
+
+=sz($n)
+  $val: 100% / $columns * $n
+  width: #{calc(#{$val} - #{$offset})}
+
+=shift($n)
+  $val: 100% / $columns * $n
+  margin-left: #{calc(#{$val} + #{$offset_one_side})}
+  margin-right: #{calc(#{$val} + #{$offset_one_side})}
+
+=shift-left($n)
+  $val: 100% / $columns * $n
+  margin-left: #{calc(#{$val} + #{$offset_one_side})}
+
+=shift-right($n)
+  $val: 100% / $columns * $n
+  margin-right: #{calc(#{$val} + #{$offset_one_side})}
+
+=shift-padding($n)
+  $val: 100% / $columns * $n
+  padding-left: #{calc(#{$val} + #{$offset_one_side})}
+  padding-right: #{calc(#{$val} + #{$offset_one_side})}
+
+=shift-padding-left($n)
+  $val: 100% / $columns * $n
+  padding-left: #{calc(#{$val} + #{$offset_one_side})}
+
+=shift-padding-right($n)
+  $val: 100% / $columns * $n
+  padding-right: #{calc(#{$val} + #{$offset_one_side})}
+
+=debug($background, $outline)
+  height: 100vh
+  position: fixed
+  width: 100%
+
+  > div
+    height: inherit
+    +wrapper()
+
+    > div
+      height: inherit
+      +row-flex()
+
+      > div
+        +col()
+        +size(1)
+        height: inherit
+        outline: $outline
+        background: $background
+
+=clearfix()
+  &::after
+    display: block
+    content: ""
+    clear: both
+

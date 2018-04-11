@@ -1,0 +1,38 @@
+$main: #393939
+$desktop: 960
+$tablet: 660
+$mobile: 320
+$container-desktop: 940
+
+html
+  box-sizing: border-box
+
+*,
+*::before,
+*::after
+  box-sizing: inherit
+
+img
+  max-width: 100%
+  height: auto
+
+body
+  +rob
+  font-size: 14px
+  line-height: 1.5
+
+  color: $main
+
+.container
+  max-width: 1325px
+  margin: 0 auto
+
+  +to(1400)
+    margin: 0 37px
+
+
+.slick-list,
+.slick-track,
+.slick-slide,
+.slick-slide > div
+  height: 100%

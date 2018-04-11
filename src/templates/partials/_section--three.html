@@ -1,0 +1,151 @@
+<!-- begin section -->
+<div class="section section--first">
+  <div class="container">
+
+    <!-- begin section__wrap -->
+    <div class="section__wrap">
+
+      <!-- begin section__item-v3 chart -->
+      <div class="section__item-v3 chart section--table">
+
+        <div class="chart__head">
+          <h2 class="chart__title">Product List</h2>
+          <div class="cart__buttons buttons">
+            <button class="button button--menu"></button>
+            <button class="button button--options"></button>
+          </div>
+        </div>
+
+        <div class="chart__main">
+
+          <table class="rating-table">
+            <thead>
+              <tr>
+                <td class="rating-table__name">Product name</td>
+                <td class="rating-table__id">Product ID</td>
+                <td class="rating-table__rating">Rating</td>
+                <td class="rating-table__sale">Sale</td>
+              </tr>
+            </thead>
+            <tbody>
+              {% for t in products %}
+              <tr>
+                <td>Product name</td>
+                <td>#{{t.id}}</td>
+                <td>
+                  <div class="rating">
+                    <div class="rating__active" style="width: 135px;"></div>
+                  </div>
+                </td>
+                <td>{{t.id}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="chart__more">
+          <a href="#" class="more">See full list</a>
+        </div>
+
+
+      </div>
+      <!-- end section__item-v3 chart -->
+
+      <!-- begin section__item-v2 -->
+      <div class="section__item-v2">
+
+        <!-- begin section__item-v4 chart -->
+        <div class="section__item-v4 chart">
+
+          <div class="chart__head">
+            <h2 class="chart__title">Todays Sale</h2>
+            <div class="cart__buttons buttons">
+              <button class="button button--menu"></button>
+              <button class="button button--options"></button>
+            </div>
+          </div>
+
+          <div class="chart__main line-compare">
+
+            <div class="line-compare__item">
+              <div class="line-compare__title">Product Name</div>
+              <div class="line-compare__lines">
+                <div class="line" style="width: 100%;"></div>
+                <div class="line line--second" style="width: 80%;"></div>
+              </div>
+            </div>
+
+            <div class="line-compare__item">
+              <div class="line-compare__title">Product Name</div>
+              <div class="line-compare__lines">
+                <div class="line" style="width: 60%;"></div>
+                <div class="line line--second" style="width: 55%;"></div>
+              </div>
+            </div>
+
+            <div class="line-compare__item">
+              <div class="line-compare__title">Product Name</div>
+              <div class="line-compare__lines">
+                <div class="line" style="width: 75%;"></div>
+                <div class="line line--second" style="width: 60%;"></div>
+              </div>
+            </div>
+
+            <div class="line-compare__legend legend">
+              <div class="legend__item">
+                <div class="legend__color" style="background-color: #f95738;"></div>
+                <div class="legend__title">Sale</div>
+              </div>
+              <div class="legend__item">
+                <div class="legend__color" style="background-color: #2c3e50;"></div>
+                <div class="legend__title">Comission</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="chart__more">
+            <a href="#" class="more">See full list</a>
+          </div>
+
+
+        </div>
+        <!-- end section__item-v4 chart -->
+
+        <!-- begin section__item-v4 chart -->
+        <div class="section__item-v4 chart">
+
+          <div class="chart__head">
+            <h2 class="chart__title">Todays Sale</h2>
+            <div class="cart__buttons buttons">
+              <button class="button button--menu"></button>
+              <button class="button button--options"></button>
+            </div>
+          </div>
+
+          <div class="chart__main sale">
+            <div class="sale__count">175k <span></span></div>
+            <a href="#" class="sale__more">Product List</a>
+          </div>
+
+          <div class="chart__more">
+            <a href="#" class="more">See full list</a>
+          </div>
+
+
+        </div>
+        <!-- end section__item-v4 chart -->
+
+      </div>
+      <!-- end section__item-v2 chart -->
+
+    </div>
+    <!-- end section__wrap -->
+
+  </div>
+</div>
+<!-- end section -->
+
+
