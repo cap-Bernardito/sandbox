@@ -5,6 +5,7 @@
 // import rangesliderJs from 'rangeslider-js';
 // import toTop from './lib/_to-top';
 import sideMenu from './lib/side-menu';
+import sticky from './lib/sticky';
 
 // toTop();
 
@@ -13,6 +14,7 @@ import sideMenu from './lib/side-menu';
 window.addEventListener('DOMContentLoaded', domCreated);
 function domCreated() {
   sideMenu();
+  sticky();
 
 
 }
