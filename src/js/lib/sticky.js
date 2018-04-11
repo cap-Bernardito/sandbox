@@ -1,4 +1,4 @@
-export default function sayHello() {
+export default function() {
 
   const header = document.querySelector('.header');
   const body = document.querySelector('body');
