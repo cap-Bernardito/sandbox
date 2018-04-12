@@ -1,14 +1,22 @@
+const header = document.querySelector('.header');
+const headerHeight = header.offsetHeight;
+const content = document.querySelector('.js-content');
+const scrolltopTrigger = document.querySelector('.to-top');
+
 export const VARS = {
   supportPageOffset: window.pageXOffset !== undefined,
   // page: document.querySelector('.js-page').getAttribute('data-page'),
   scrollbarWidth: window.innerWidth - document.body.clientWidth,
   isWindows: navigator.userAgent.indexOf('Windows') > -1,
 
+
 };
 
 export const events = {
   handleBodyScroll: function handleBodyScroll() {
     let scroll = false;
+
+    // Get Scroll
     if (VARS.supportPageOffset) {
       scroll = window.pageYOffset;
     } else {
@@ -18,8 +26,32 @@ export const events = {
         scroll = document.body.scrollTop;
       }
     }
+
+    // HeaderStick
+    events.handleHeaderSticky(scroll);
+
+    // To-top button
+    if (scroll > 500) {
+      scrolltopTrigger.classList.add('to-top--visible');
+    } else {
+      scrolltopTrigger.classList.remove('to-top--visible');
+    }
+
     return scroll;
   },
+  handleHeaderSticky: function handleHeaderSticky (scroll) {
+    if (scroll > headerHeight - 3) {
+      document.body.classList.add('sticky');
+      content.style.paddingTop = +headerHeight + 'px';
+    } else {
+      document.body.classList.remove('sticky');
+      content.style.removeProperty('padding-top');
+    }
+  },
+  handleScrolltopTriggerClick: function handleScrolltopTriggerClick(e) {
+    e.preventDefault();
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+  }
   // handleInputBlur: function handleInputBlur(e) { //forminput
   //   const input = e.target;
   //   if (input.value.length) {
@@ -67,6 +99,11 @@ export function registerEvents() {
   // events.handleInitTextInputs();
   // events.handleInitTextAreas();
 
+  document.addEventListener('scroll', events.handleBodyScroll);
+
+  if (scrolltopTrigger) {
+    scrolltopTrigger.addEventListener('click', events.handleScrolltopTriggerClick);
+  }
 
   // if (menuSearchForm) { //forminput
   //   menuSearchInput.addEventListener('keyup', events.handleMenuSearchInputKeyup);
