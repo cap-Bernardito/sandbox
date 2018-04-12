@@ -1,0 +1,33 @@
+.nav
+  position: relative
+
+  &__submenu.active
+    opacity: 1
+    visibility: visible
+    transform: translateY(0)
+
+  &__submenu
+    z-index: 10
+    position: absolute
+    top: 100%
+    left: 0
+    width: 100%
+    transform: translateY(100px)
+
+    opacity: 0
+    visibility: hidden
+
+    transition: transform .2s, opacity .3s, visibility .3s
+
+
+
+
+
+
+
+
+
+.nav__submenu
+  .section
+    padding-top: 40px
+    background: #2c3e50

@@ -1,17 +1,21 @@
 
 <!-- begin nav -->
 <div class="nav">
-  <!-- <div class="container"> -->
+  <div class="container">
 
     <ul class="nav__list">
       <li class="nav__item nav__item--is-active"><a href="#" style="background-image: url(img/icon-dash.png);">Dashboard</a></li>
       <li class="nav__item"><a href="#" style="background-image: url(img/icon-stac.png);">Stactics</a></li>
-      <li class="nav__item"><a href="#" style="background-image: url(img/icon-sales.png);">Sales</a></li>
+      <li class="nav__item"><a href="#" style="background-image: url(img/icon-sales.png);" data-submenu-target="MENU_22">Sales</a></li>
       <li class="nav__item"><a href="#" style="background-image: url(img/icon-cust.png);">Customers</a></li>
       <li class="nav__item"><a href="#" style="background-image: url(img/icon-sett.png);">Settings</a></li>
     </ul>
 
-  <!-- </div> -->
+    <div class="nav__submenu" data-submenu-id="MENU_22">
+      {% include "partials/_section--four.html" %}
+    </div>
+
+  </div>
 </div>
 <!-- end nav -->
 
