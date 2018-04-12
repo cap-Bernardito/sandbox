@@ -1,3 +1,4 @@
+import * as exports from './lib/__defineVars';
 // import pixel from 'pixel-glass/script.js';
 // import 'slick-carousel';
 // import slick from './lib/slick';
@@ -11,12 +12,16 @@ import sticky from './lib/sticky';
 
 // pixel();
 
-window.addEventListener('DOMContentLoaded', domCreated);
+
+
+
 function domCreated() {
+  exports.registerEvents();
   sideMenu();
   sticky();
 
 
 }
+window.addEventListener('DOMContentLoaded', domCreated);
 
 

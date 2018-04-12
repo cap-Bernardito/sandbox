@@ -1,19 +1,23 @@
+import * as exports from './__defineVars';
+
 export default function() {
-
   const header = document.querySelector('.header');
-  const body = document.querySelector('body');
   const headerHeight = header.offsetHeight;
+  const content = document.querySelector('.js-content');
 
-
-  window.addEventListener('scroll', sticky);
 
   function sticky () {
-    if ( pageYOffset > headerHeight ) {
-      body.classList.add('sticky');
+    const scroll = exports.events.handleBodyScroll();
+
+    if (scroll > headerHeight - 3) {
+      document.body.classList.add('sticky');
+      content.style.paddingTop = +headerHeight + 'px';
     } else {
-      body.classList.remove('sticky');
+      document.body.classList.remove('sticky');
+      content.style.removeProperty('padding-top');
     }
   }
 
-
+  window.addEventListener('scroll', sticky);
 }
+
