@@ -30,6 +30,7 @@ gulp.task('sass', function() {
       .pipe(env.if.development(sourcemaps.init()))
       .pipe(sass({ outputStyle: 'expanded', precision: 5 })) // 'expanded', nested, expanded, compact, compressed
       .on('error', config.errorHandler)
+      .pipe(postcss([require('postcss-flexbugs-fixes')]) )
       .pipe(postcss(postcssParams))
       // .pipe(rename('style.min.css'))
       .pipe(env.if.development(sourcemaps.write('./')))
