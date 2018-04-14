@@ -56,6 +56,18 @@ export const events = {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   },
 
+  handleAnchorClick: function handleAnchorClick(e) {
+    e.preventDefault();
+    const target = document.querySelector(e.currentTarget.getAttribute('href'));
+    if (target) {
+      if (VARS.isMobile) {
+        window.scroll({ top: target.offsetTop, left: 0, behavior: 'smooth' });
+      } else {
+        window.scroll({ top: target.offsetTop + 80, left: 0, behavior: 'smooth' });
+      }
+    }
+  },
+
   handleSubmenuTriggerMouseover: function handleSubmenuTriggerMouseover(e) {
     clearTimeout(VARS.overTimeout);
     const target = e.target.getAttribute('data-submenu-target');
@@ -64,7 +76,6 @@ export const events = {
     });
     document.querySelector('.nav__submenu[data-submenu-id="' + target + '"]').classList.add('active');
   },
-
   handleSubmenuTriggerMouseout: function handleSubmenuTriggerMouseout(e) {
     VARS.overTimeout = setTimeout(() => {
       if (!VARS.overSubmenu) {
@@ -73,14 +84,12 @@ export const events = {
       }
     }, 300);
   },
-
   handleSubmenuMouseenter: function handleSubmenuMouseenter(e) {
     if (!document.body.classList.contains('sticky')) {
       VARS.overSubmenu = true;
       e.target.classList.add('active');
     }
   },
-
   handleSubmenuMouseleave: function handleSubmenuMouseleave(e) {
     VARS.overSubmenu = false;
     e.target.classList.remove('active');
@@ -152,6 +161,13 @@ function initDesktopSubmenu() {
   });
 }
 
+function initAnchors() {
+  const anchors = Array.prototype.slice.call(document.querySelectorAll('.js-anchor'));
+  anchors.forEach( elem => {
+    elem.addEventListener('click', events.handleAnchorClick);
+  });
+}
+
 
 
 
@@ -164,6 +180,7 @@ export function registerEvents() {
 
   document.addEventListener('scroll', events.handleBodyScroll);
   initDesktopSubmenu();
+  initAnchors();
 
   if (scrolltopTrigger) {
     scrolltopTrigger.addEventListener('click', events.handleScrolltopTriggerClick);
