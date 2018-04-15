@@ -140,6 +140,34 @@ export const events = {
   //     }
   //   });
   // },
+
+  handleModalButtons: function handleDataTargetButtons(event, fn) {
+    const buttons = Array.prototype.slice.call(document.querySelectorAll('.js-modal-trigger[data-modal-target]'));
+    buttons.forEach( button => {
+      button.addEventListener(event, fn);
+    });
+  },
+  handleModalOpen: function handleModalOpen(e) {
+    const target = e.target.dataset.modalTarget;
+    const targetModal = document.querySelector('.modal[data-modal-id=' + target + ']');
+
+    targetModal.querySelector('.js-modal-close').addEventListener('click', events.hundleModalClose);
+    targetModal.addEventListener('click', events.hundleModalClose);
+    targetModal.querySelector('.modal__inner').addEventListener('click', events.hundleModalInnerClose);
+
+    targetModal.classList.add('active');
+    document.body.classList.add('modal--open');
+    document.body.style.paddingRight = VARS.scrollbarWidth + 'px';
+  },
+  hundleModalClose: function hundleModalClose(e) {
+    e.target.closest('.modal').classList.remove('active');
+    document.body.classList.remove('modal--open');
+    document.body.style.paddingRight = '';
+  },
+  hundleModalInnerClose: function hundleModalInnerClose(e) {
+    e.stopPropagation();
+  },
+
 }
 
 
@@ -181,6 +209,7 @@ export function registerEvents() {
   document.addEventListener('scroll', events.handleBodyScroll);
   initDesktopSubmenu();
   initAnchors();
+  events.handleModalButtons('click', events.handleModalOpen);
 
   if (scrolltopTrigger) {
     scrolltopTrigger.addEventListener('click', events.handleScrolltopTriggerClick);
