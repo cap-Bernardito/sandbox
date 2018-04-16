@@ -61,7 +61,8 @@
     "run-sequence": "^2.2.1",
     "through2": "^2.0.3",
     "webpack": "^3.10.0",
-    "webpack-bundle-analyzer": "^2.9.2"
+    "webpack-bundle-analyzer": "^2.9.2",
+    "wow.js": "^1.2.2"
   },
   "eslintConfig": {
     "root": true,

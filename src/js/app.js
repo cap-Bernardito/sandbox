@@ -1,6 +1,7 @@
-import * as exports from './lib/__defineVars';
 import smoothscroll from 'smoothscroll-polyfill';
 import enquire from 'enquire.js';
+import WOW from 'wow.js';
+import * as exports from './lib/__defineVars';
 // import pixel from 'pixel-glass/script.js';
 // import 'slick-carousel';
 // import slick from './lib/slick';
@@ -10,6 +11,24 @@ import sideMenu from './lib/side-menu';
 
 
 // pixel();
+
+const scrollAnimate = new WOW(
+  {
+    boxClass:     'wow',
+    animateClass: 'animated',
+    offset:       0,
+    mobile:       true,
+    live:         true,
+    callback(box) {
+      console.log(box);
+
+    },
+    scrollContainer: null,
+    resetAnimation: true,
+  }
+);
+scrollAnimate.init();
+
 
 
 
