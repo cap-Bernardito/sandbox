@@ -153,6 +153,7 @@ export const events = {
 
     targetModal.querySelector('.js-modal-close').addEventListener('click', events.hundleModalClose);
     targetModal.addEventListener('click', events.hundleModalClose);
+    document.body.addEventListener('keydown', events.hundleModalCloseKeydown);
     targetModal.querySelector('.modal__inner').addEventListener('click', events.hundleModalInnerClose);
 
     targetModal.classList.add('active');
@@ -166,6 +167,15 @@ export const events = {
   },
   hundleModalInnerClose: function hundleModalInnerClose(e) {
     e.stopPropagation();
+  },
+  hundleModalCloseKeydown: function hundleModalCloseKeydown(e) {
+    if (e.keyCode === 27) {
+      const activeModal = document.querySelector('.modal.active');
+      activeModal.addEventListener('click', events.hundleModalClose);
+      activeModal.click();
+      activeModal.removeEventListener('click', events.hundleModalClose);
+      document.body.removeEventListener('keydown', events.hundleModalCloseKeydown);
+    }
   },
 
 }
