@@ -10,10 +10,27 @@ export const VARS = {
   isWindows: navigator.userAgent.indexOf('Windows') > -1,
   overSubmenu: false,
   overTimeout: null,
-
+  isCSS1Compat: (document.compatMode || '') === 'CSS1Compat',
 };
 
 export const events = {
+  throttle: function throttle(callback, limit = 30, context = this) {
+    let wait = false;
+    let timeout;
+
+    return ( ...args ) => {
+        if ( !wait ) {
+            callback.call( context, ...args );
+
+            wait = true;
+            clearTimeout( timeout );
+
+            timeout = setTimeout( function () {
+                wait = false;
+            }, limit );
+        }
+    }
+  },
   handleBodyScroll: function handleBodyScroll() {
     let scroll = false;
 
@@ -216,7 +233,8 @@ export function registerEvents() {
   // events.handleInitTextInputs();
   // events.handleInitTextAreas();
 
-  document.addEventListener('scroll', events.handleBodyScroll);
+  // document.addEventListener('scroll', events.handleBodyScroll);
+  document.addEventListener('scroll', events.throttle(events.handleBodyScroll, 100));
   initDesktopSubmenu();
   initAnchors();
   events.handleModalButtons('click', events.handleModalOpen);
